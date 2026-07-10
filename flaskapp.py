@@ -91,7 +91,7 @@ app.config['download_dir'] = download_dir
 # set the secret key.  keep this really secret:
 #secret_key = os.urandom(24).hex()
 #app.secret_key = secret_key
-# check if fixed secret_key can allow multiple cmsimde on same session
+# check if fixed secret_key can allow multiple cms on same session
 app.secret_key = "eyJhZG1pbl8yczIwIjoxfQ.YOZamA.ft1Mus8eZ6m0QPXOBNLv0UBn6VQ"
 
 try:
@@ -147,7 +147,7 @@ def checkLogin():
         site_title, saved_password = parse_config()
     hashed_password = hashlib.sha512(password.encode('utf-8')).hexdigest()
     if hashed_password == saved_password:
-        # 為了讓多 cmsimde 可以在同一個瀏覽器共存, 因此讓每一個 session 不同
+        # 為了讓多 cms 可以在同一個瀏覽器共存, 因此讓每一個 session 不同
         session['admin_'+token] = 1
         # 看起來送至 client 端的不是 admin_token, 而是編碼過的 secret_key
         return redirect('/edit_page')
@@ -1084,13 +1084,13 @@ def get_page2(heading, head, edit, get_page_content = None):
     # 配合 object 標註導入 svg data 來源的轉換
     page = [w.replace('data="/images/', 'data="./../images/') for w in page]
     # 假如有 src="/static/ace/ 則換為 src="./../static/ace/
-    page = [w.replace('src="/static/', 'src="./../cmsimde/static/') for w in page]
+    page = [w.replace('src="/static/', 'src="./../cms/static/') for w in page]
     # 假如有 src=/downloads 則換為 src=./../../downloads
     page = [w.replace('src="/downloads', 'src="./../downloads') for w in page]
-    # 假如有 pythonpath:['/static/' 則換為 ./../cmsimde/static/
-    page = [w.replace("pythonpath:['/static/'", "pythonpath:['./../cmsimde/static/'") for w in page]
-    # 針對 wink3 假如有 data-dirname="/static" 換為 data-dirname="./../cmsimde/static"
-    page = [w.replace("data-dirname=\"/static\"", "data-dirname=\"./../cmsimde/static\"") for w in page]
+    # 假如有 pythonpath:['/static/' 則換為 ./../cms/static/
+    page = [w.replace("pythonpath:['/static/'", "pythonpath:['./../cms/static/'") for w in page]
+    # 針對 wink3 假如有 data-dirname="/static" 換為 data-dirname="./../cms/static"
+    page = [w.replace("data-dirname=\"/static\"", "data-dirname=\"./../cms/static\"") for w in page]
     # 假如有 /get_page 則需額外使用 regex 進行字串代換, 表示要在靜態網頁直接取網頁 (尚未完成)
     #page = [w.replace('/get_page', '') for w in page]
 
@@ -1156,19 +1156,19 @@ def get_page2(heading, head, edit, get_page_content = None):
     <!-- for footer -->
     
         </div> <!-- for site wrap -->
-            <!-- <script src="../cmsimde/static/chimper/js/jquery-3.3.1.min.js"></script> -->
-            <script src="../cmsimde/static/chimper/js/jquery-migrate-3.0.1.min.js"></script>
-            <script src="../cmsimde/static/chimper/js/jquery-ui.js"></script>
-            <script src="../cmsimde/static/chimper/js/popper.min.js"></script>
-            <script src="../cmsimde/static/chimper/js/bootstrap.min.js"></script>
-            <script src="../cmsimde/static/chimper/js/owl.carousel.min.js"></script>
-            <script src="../cmsimde/static/chimper/js/jquery.stellar.min.js"></script>
-            <script src="../cmsimde/static/chimper/js/jquery.countdown.min.js"></script>
-            <script src="../cmsimde/static/chimper/js/jquery.magnific-popup.min.js"></script>
-            <script src="../cmsimde/static/chimper/js/bootstrap-datepicker.min.js"></script>
-            <script src="../cmsimde/static/chimper/js/aos.js"></script>
+            <!-- <script src="../cms/static/chimper/js/jquery-3.3.1.min.js"></script> -->
+            <script src="../cms/static/chimper/js/jquery-migrate-3.0.1.min.js"></script>
+            <script src="../cms/static/chimper/js/jquery-ui.js"></script>
+            <script src="../cms/static/chimper/js/popper.min.js"></script>
+            <script src="../cms/static/chimper/js/bootstrap.min.js"></script>
+            <script src="../cms/static/chimper/js/owl.carousel.min.js"></script>
+            <script src="../cms/static/chimper/js/jquery.stellar.min.js"></script>
+            <script src="../cms/static/chimper/js/jquery.countdown.min.js"></script>
+            <script src="../cms/static/chimper/js/jquery.magnific-popup.min.js"></script>
+            <script src="../cms/static/chimper/js/bootstrap-datepicker.min.js"></script>
+            <script src="../cms/static/chimper/js/aos.js"></script>
             <!--
-            <script src="../cmsimde/static/chimper/js/typed.js"></script>
+            <script src="../cms/static/chimper/js/typed.js"></script>
                     <script>
                     var typed = new Typed('.typed-words', {
                     strings: ["Web Apps"," WordPress"," Mobile Apps"],
@@ -1181,7 +1181,7 @@ def get_page2(heading, head, edit, get_page_content = None):
                     });
                     </script>
             -->
-            <script src="../cmsimde/static/chimper/js/main.js"></script>
+            <script src="../cms/static/chimper/js/main.js"></script>
         ''' + checkMath() + '''</body></html>
         '''
     # enter edit mode
@@ -1965,11 +1965,11 @@ def parse_config():
         with open(config_dir + "config", "w", encoding="utf-8") as f:
             f.write(hashed_password)
 
-    # if there is no config/sitetitle automatically generate one with content "cmsimde"
+    # if there is no config/sitetitle automatically generate one with content "cms"
     if not os.path.isfile(config_dir+"sitetitle"):
-        # default sitetitle is "cmsimde"
+        # default sitetitle is "cms"
         with open(config_dir + "sitetitle", "w", encoding="utf-8") as f:
-            f.write("cmsimde")
+            f.write("cms")
 
     # read site_title from config/sitetitle
     site_title = file_get_contents(config_dir + "sitetitle")
@@ -2691,17 +2691,17 @@ def set_css2():
         <title>''' + init.Init.site_title + '''</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
-        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap.min.css">
-        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/magnific-popup.css">
-        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/jquery-ui.css">
-        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/owl.carousel.min.css">
-        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/owl.theme.default.min.css">
-        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap-datepicker.css">
-        <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/flaticon/font/flaticon.css">
-        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/aos.css">
-        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/style.css">
-        <link rel="shortcut icon" href="./../cmsimde/static/favicons.png">
+        <link rel="stylesheet" href="./../cms/static/chimper/fonts/icomoon/style.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/magnific-popup.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/jquery-ui.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/bootstrap-datepicker.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/fonts/flaticon/font/flaticon.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/aos.css">
+        <link rel="stylesheet" href="./../cms/static/chimper/css/style.css">
+        <link rel="shortcut icon" href="./../cms/static/favicons.png">
         
         <style type='text/css'>
             .site-section {
@@ -2714,18 +2714,18 @@ def set_css2():
         </style>
     '''
     outstring = '''<!DOCTYPE html><html>''' + static_head + '''
-        <!-- <script src="./../cmsimde/static/jquery.js"></script> -->
+        <!-- <script src="./../cms/static/jquery.js"></script> -->
         <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
-        <script src="../cmsimde/static/chimper/js/jquery-3.3.1.min.js"></script>
-        <link rel="stylesheet" href="./../cmsimde/static/tipuesearch/css/normalize.min.css">
-        <script src="./../cmsimde/static/tipuesearch/tipuesearch_set.js"></script>
+        <script src="../cms/static/chimper/js/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="./../cms/static/tipuesearch/css/normalize.min.css">
+        <script src="./../cms/static/tipuesearch/tipuesearch_set.js"></script>
         <script src="tipuesearch_content.js"></script>
-        <link rel="stylesheet" href="./../cmsimde/static/tipuesearch/css/tipuesearch.css">
-        <script src="./../cmsimde/static/tipuesearch/tipuesearch.js"></script>
+        <link rel="stylesheet" href="./../cms/static/tipuesearch/css/tipuesearch.css">
+        <script src="./../cms/static/tipuesearch/tipuesearch.js"></script>
         <!-- for Wink3 客製化關閉 -->
         <!--
-        <link rel="stylesheet" type="text/css" href="./../cmsimde/static/winkPlayer.css" />
-        <script type="text/javascript" src="./../cmsimde/static/winkPlayer.js"></script>
+        <link rel="stylesheet" type="text/css" href="./../cms/static/winkPlayer.css" />
+        <script type="text/javascript" src="./../cms/static/winkPlayer.js"></script>
         -->
         <script>
             /* original tipuesearch
@@ -3018,32 +3018,32 @@ def syntaxhighlight2():
     """
 
     return '''
-<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shCore.js"></script>
-<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushBash.js"></script>
-<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushDiff.js"></script>
-<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushJScript.js"></script>
-<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushJava.js"></script>
-<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushPython.js"></script>
-<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushSql.js"></script>
-<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushHaxe.js"></script>
-<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushXml.js"></script>
-<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushPhp.js"></script>
-<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushPowerShell.js"></script>
-<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushLua.js"></script>
-<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushMojo.js"></script>
-<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushWbt.js"></script>
-<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushCpp.js"></script>
-<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushCss.js"></script>
-<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushCSharp.js"></script>
-<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushDart.js"></script>
-<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushRust.js"></script>
-<link type="text/css" rel="stylesheet" href="./../cmsimde/static/syntaxhighlighter/css/shCoreDefault.css"/>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shCore.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushBash.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushDiff.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushJScript.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushJava.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushPython.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushSql.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushHaxe.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushXml.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushPhp.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushPowerShell.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushLua.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushMojo.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushWbt.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushCpp.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushCss.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushCSharp.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushDart.js"></script>
+<script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushRust.js"></script>
+<link type="text/css" rel="stylesheet" href="./../cms/static/syntaxhighlighter/css/shCoreDefault.css"/>
 <script type="text/javascript">SyntaxHighlighter.all();</script>
 <!-- 暫時不用
-<script src="./../cmsimde/static/fengari-web.js"></script>
-<script type="text/javascript" src="./../cmsimde/static/Cango-13v08-min.js"></script>
-<script type="text/javascript" src="./../cmsimde/static/CangoAxes-4v01-min.js"></script>
-<script type="text/javascript" src="./../cmsimde/static/gearUtils-05.js"></script>
+<script src="./../cms/static/fengari-web.js"></script>
+<script type="text/javascript" src="./../cms/static/Cango-13v08-min.js"></script>
+<script type="text/javascript" src="./../cms/static/CangoAxes-4v01-min.js"></script>
+<script type="text/javascript" src="./../cms/static/gearUtils-05.js"></script>
 -->
 <!-- for Brython 暫時不用
 <script src="https://scrum-3.github.io/web/brython/brython.js"></script>

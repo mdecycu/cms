@@ -11,7 +11,7 @@
 <v t="leo.20260202073009.3"><vh>@string qt-layout-name = vertical-thirds</vh></v>
 </v>
 <v t="leo.20201127112020.1"><vh>About</vh>
-<v t="leo.20210320213557.1"><vh>cmsimde</vh></v>
+<v t="leo.20210320213557.1"><vh>cms</vh></v>
 <v t="leo.20210320210418.1"><vh>assemble content.htm</vh></v>
 <v t="leo.20210424092822.1"><vh>202104 修改</vh></v>
 <v t="yen.20210707134934.1"><vh>202107 修改</vh>
@@ -7333,7 +7333,7 @@
 <v t="leo.20260710101256.1"><vh>@clean README.md</vh></v>
 </vnodes>
 <tnodes>
-<t tx="leo.20190515144224.1" _mod_time="4741da9415348000002e"># coding: utf-8
+<t tx="leo.20190515144224.1" _mod_time="4741da9416638000002e"># coding: utf-8
 
 @others
 if __name__ == "__main__":
@@ -7432,7 +7432,7 @@ app.config['download_dir'] = download_dir
 # set the secret key.  keep this really secret:
 #secret_key = os.urandom(24).hex()
 #app.secret_key = secret_key
-# check if fixed secret_key can allow multiple cmsimde on same session
+# check if fixed secret_key can allow multiple cms on same session
 app.secret_key = "eyJhZG1pbl8yczIwIjoxfQ.YOZamA.ft1Mus8eZ6m0QPXOBNLv0UBn6VQ"
 
 try:
@@ -7786,7 +7786,7 @@ def checkLogin():
         site_title, saved_password = parse_config()
     hashed_password = hashlib.sha512(password.encode('utf-8')).hexdigest()
     if hashed_password == saved_password:
-        # 為了讓多 cmsimde 可以在同一個瀏覽器共存, 因此讓每一個 session 不同
+        # 為了讓多 cms 可以在同一個瀏覽器共存, 因此讓每一個 session 不同
         session['admin_'+token] = 1
         # 看起來送至 client 端的不是 admin_token, 而是編碼過的 secret_key
         return redirect('/edit_page')
@@ -9228,17 +9228,17 @@ window.location= 'https://' + location.host + location.pathname + location.searc
         &lt;title&gt;''' + init.Init.site_title + '''&lt;/title&gt;
         &lt;meta charset="utf-8"&gt;
         &lt;meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"&gt;
-        &lt;link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css"&gt;
-        &lt;link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap.min.css"&gt;
-        &lt;link rel="stylesheet" href="./../cmsimde/static/chimper/css/magnific-popup.css"&gt;
-        &lt;link rel="stylesheet" href="./../cmsimde/static/chimper/css/jquery-ui.css"&gt;
-        &lt;link rel="stylesheet" href="./../cmsimde/static/chimper/css/owl.carousel.min.css"&gt;
-        &lt;link rel="stylesheet" href="./../cmsimde/static/chimper/css/owl.theme.default.min.css"&gt;
-        &lt;link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap-datepicker.css"&gt;
-        &lt;link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/flaticon/font/flaticon.css"&gt;
-        &lt;link rel="stylesheet" href="./../cmsimde/static/chimper/css/aos.css"&gt;
-        &lt;link rel="stylesheet" href="./../cmsimde/static/chimper/css/style.css"&gt;
-        &lt;link rel="shortcut icon" href="./../cmsimde/static/favicons.png"&gt;
+        &lt;link rel="stylesheet" href="./../cms/static/chimper/fonts/icomoon/style.css"&gt;
+        &lt;link rel="stylesheet" href="./../cms/static/chimper/css/bootstrap.min.css"&gt;
+        &lt;link rel="stylesheet" href="./../cms/static/chimper/css/magnific-popup.css"&gt;
+        &lt;link rel="stylesheet" href="./../cms/static/chimper/css/jquery-ui.css"&gt;
+        &lt;link rel="stylesheet" href="./../cms/static/chimper/css/owl.carousel.min.css"&gt;
+        &lt;link rel="stylesheet" href="./../cms/static/chimper/css/owl.theme.default.min.css"&gt;
+        &lt;link rel="stylesheet" href="./../cms/static/chimper/css/bootstrap-datepicker.css"&gt;
+        &lt;link rel="stylesheet" href="./../cms/static/chimper/fonts/flaticon/font/flaticon.css"&gt;
+        &lt;link rel="stylesheet" href="./../cms/static/chimper/css/aos.css"&gt;
+        &lt;link rel="stylesheet" href="./../cms/static/chimper/css/style.css"&gt;
+        &lt;link rel="shortcut icon" href="./../cms/static/favicons.png"&gt;
         
         &lt;style type='text/css'&gt;
             .site-section {
@@ -9251,18 +9251,18 @@ window.location= 'https://' + location.host + location.pathname + location.searc
         &lt;/style&gt;
     '''
     outstring = '''&lt;!DOCTYPE html&gt;&lt;html&gt;''' + static_head + '''
-        &lt;!-- &lt;script src="./../cmsimde/static/jquery.js"&gt;&lt;/script&gt; --&gt;
+        &lt;!-- &lt;script src="./../cms/static/jquery.js"&gt;&lt;/script&gt; --&gt;
         &lt;!-- &lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"&gt;&lt;/script&gt; --&gt;
-        &lt;script src="../cmsimde/static/chimper/js/jquery-3.3.1.min.js"&gt;&lt;/script&gt;
-        &lt;link rel="stylesheet" href="./../cmsimde/static/tipuesearch/css/normalize.min.css"&gt;
-        &lt;script src="./../cmsimde/static/tipuesearch/tipuesearch_set.js"&gt;&lt;/script&gt;
+        &lt;script src="../cms/static/chimper/js/jquery-3.3.1.min.js"&gt;&lt;/script&gt;
+        &lt;link rel="stylesheet" href="./../cms/static/tipuesearch/css/normalize.min.css"&gt;
+        &lt;script src="./../cms/static/tipuesearch/tipuesearch_set.js"&gt;&lt;/script&gt;
         &lt;script src="tipuesearch_content.js"&gt;&lt;/script&gt;
-        &lt;link rel="stylesheet" href="./../cmsimde/static/tipuesearch/css/tipuesearch.css"&gt;
-        &lt;script src="./../cmsimde/static/tipuesearch/tipuesearch.js"&gt;&lt;/script&gt;
+        &lt;link rel="stylesheet" href="./../cms/static/tipuesearch/css/tipuesearch.css"&gt;
+        &lt;script src="./../cms/static/tipuesearch/tipuesearch.js"&gt;&lt;/script&gt;
         &lt;!-- for Wink3 客製化關閉 --&gt;
         &lt;!--
-        &lt;link rel="stylesheet" type="text/css" href="./../cmsimde/static/winkPlayer.css" /&gt;
-        &lt;script type="text/javascript" src="./../cmsimde/static/winkPlayer.js"&gt;&lt;/script&gt;
+        &lt;link rel="stylesheet" type="text/css" href="./../cms/static/winkPlayer.css" /&gt;
+        &lt;script type="text/javascript" src="./../cms/static/winkPlayer.js"&gt;&lt;/script&gt;
         --&gt;
         &lt;script&gt;
             /* original tipuesearch
@@ -9511,32 +9511,32 @@ img.add_border {
     """
 
     return '''
-&lt;script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shCore.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushBash.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushDiff.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushJScript.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushJava.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushPython.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushSql.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushHaxe.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushXml.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushPhp.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushPowerShell.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushLua.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushMojo.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushWbt.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushCpp.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushCss.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushCSharp.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushDart.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushRust.js"&gt;&lt;/script&gt;
-&lt;link type="text/css" rel="stylesheet" href="./../cmsimde/static/syntaxhighlighter/css/shCoreDefault.css"/&gt;
+&lt;script type="text/javascript" src="./../cms/static/syntaxhighlighter/shCore.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushBash.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushDiff.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushJScript.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushJava.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushPython.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushSql.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushHaxe.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushXml.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushPhp.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushPowerShell.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushLua.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushMojo.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushWbt.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushCpp.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushCss.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushCSharp.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushDart.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="./../cms/static/syntaxhighlighter/shBrushRust.js"&gt;&lt;/script&gt;
+&lt;link type="text/css" rel="stylesheet" href="./../cms/static/syntaxhighlighter/css/shCoreDefault.css"/&gt;
 &lt;script type="text/javascript"&gt;SyntaxHighlighter.all();&lt;/script&gt;
 &lt;!-- 暫時不用
-&lt;script src="./../cmsimde/static/fengari-web.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript" src="./../cmsimde/static/Cango-13v08-min.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript" src="./../cmsimde/static/CangoAxes-4v01-min.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript" src="./../cmsimde/static/gearUtils-05.js"&gt;&lt;/script&gt;
+&lt;script src="./../cms/static/fengari-web.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="./../cms/static/Cango-13v08-min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="./../cms/static/CangoAxes-4v01-min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="./../cms/static/gearUtils-05.js"&gt;&lt;/script&gt;
 --&gt;
 &lt;!-- for Brython 暫時不用
 &lt;script src="https://scrum-3.github.io/web/brython/brython.js"&gt;&lt;/script&gt;
@@ -9767,11 +9767,11 @@ def logout():
         with open(config_dir + "config", "w", encoding="utf-8") as f:
             f.write(hashed_password)
 
-    # if there is no config/sitetitle automatically generate one with content "cmsimde"
+    # if there is no config/sitetitle automatically generate one with content "cms"
     if not os.path.isfile(config_dir+"sitetitle"):
-        # default sitetitle is "cmsimde"
+        # default sitetitle is "cms"
         with open(config_dir + "sitetitle", "w", encoding="utf-8") as f:
-            f.write("cmsimde")
+            f.write("cms")
 
     # read site_title from config/sitetitle
     site_title = file_get_contents(config_dir + "sitetitle")
@@ -10200,7 +10200,7 @@ port = flaskapp.dynamic_port
 
 </t>
 <t tx="leo.20190603204847.1"></t>
-<t tx="leo.20190603204921.1" _mod_time="4741da4c60770000002e">@others
+<t tx="leo.20190603204921.1" _mod_time="4741da9416750000002e">@others
 @language python
 @tabwidth -4
 </t>
@@ -10217,7 +10217,7 @@ config_dir = _curdir + "/config/"
 <t tx="leo.20190603204931.2">class Init(object):
     # uwsgi as static class variable, can be accessed by Init.uwsgi
     uwsgi = False
-    site_title = "cmsimde_site"
+    site_title = "cmsite"
     ip = "127.0.0.1"
     dynamic_port = 9443
     static_port = 8443
@@ -10531,11 +10531,11 @@ get_page2() 則與 get_page() 取頁面內容功能相同, 但用於將動態內
     page = [w.replace('src="/images/', 'src="./../images/') for w in page]
     page = [w.replace('href="/downloads/', 'href="./../downloads/') for w in page]
     # 假如有 src="/static/ace/ 則換為 src="./../static/ace/
-    page = [w.replace('src="/static/', 'src="./../cmsimde/static/') for w in page]
+    page = [w.replace('src="/static/', 'src="./../cms/static/') for w in page]
     # 假如有 src=/downloads 則換為 src=./../../downloads
     page = [w.replace('src="/downloads', 'src="./../downloads') for w in page]
     # 假如有 pythonpath:['/static/'] 則換為, 因為要導入位於 downloads 中的其他 .py, 因此去掉最後的中括號
-    page = [w.replace("pythonpath:['/static/'", "pythonpath:['./../cmsimde/static/'") for w in page]
+    page = [w.replace("pythonpath:['/static/'", "pythonpath:['./../cms/static/'") for w in page]
 
 若從靜態 content/ 中的 .html 轉回 config/content.htm, 則必須進行反向轉換.
 </t>
@@ -10547,10 +10547,10 @@ get_page2 中的字串代換, 增加在動態與靜態網頁, 可自行擷取網
 <t tx="leo.20220911144657.1">此次修改主要針對 Replit 上執行的需求
 
 1. 將 nocache.py 複製一份, 放入 up_directory, 因為 Replit 要在根目錄中, 以 main.py 執行.
-2. main.py 讓 cmsimde 以 wsgi 模式執行, 內容如下
+2. main.py 讓 cms 以 wsgi 模式執行, 內容如下
 
 # for replit
-from cmsimde import flaskapp
+from cms import flaskapp
 from gevent.pywsgi import WSGIServer
 
 #flaskapp.app.run(host="0.0.0.0", debug=True)
@@ -65056,12 +65056,12 @@ def favicon():
 </t>
 <t tx="yen.20210707134934.1"># 因為需要在 download 中導入其他 brython .py 模組, 因此刪除 ]
 
-page = [w.replace("pythonpath:['/static/'", "pythonpath:['./../cmsimde/static/'") for w in page]
+page = [w.replace("pythonpath:['/static/'", "pythonpath:['./../cms/static/'") for w in page]
 
 # 因為最後發現 browser cookie 取決於 secret_key, 只要採用固定的 secret_key, 就可以多個近端的動態系統採用不同 port 啟動. 因此以下修改 admin 名稱的作法並不需要. 但也不打算改回來.
 
 # 以下修改仍然保留
-因為要在同一個 browser session 同時開啟多個 cmsimde 動態網站, 因此利用
+因為要在同一個 browser session 同時開啟多個 cms 動態網站, 因此利用
 
 def password_generator(size=4, chars=string.ascii_lowercase + string.digits):
     return ''.join(random.choice(chars) for _ in range(size))
@@ -65094,13 +65094,13 @@ token = password_generator()
     # 配合 object 標註導入 svg data 來源的轉換
     page = [w.replace('data="/images/', 'data="./../images/') for w in page]
     # 假如有 src="/static/ace/ 則換為 src="./../static/ace/
-    page = [w.replace('src="/static/', 'src="./../cmsimde/static/') for w in page]
+    page = [w.replace('src="/static/', 'src="./../cms/static/') for w in page]
     # 假如有 src=/downloads 則換為 src=./../../downloads
     page = [w.replace('src="/downloads', 'src="./../downloads') for w in page]
-    # 假如有 pythonpath:['/static/' 則換為 ./../cmsimde/static/
-    page = [w.replace("pythonpath:['/static/'", "pythonpath:['./../cmsimde/static/'") for w in page]
-    # 針對 wink3 假如有 data-dirname="/static" 換為 data-dirname="./../cmsimde/static"
-    page = [w.replace("data-dirname=\"/static\"", "data-dirname=\"./../cmsimde/static\"") for w in page]
+    # 假如有 pythonpath:['/static/' 則換為 ./../cms/static/
+    page = [w.replace("pythonpath:['/static/'", "pythonpath:['./../cms/static/'") for w in page]
+    # 針對 wink3 假如有 data-dirname="/static" 換為 data-dirname="./../cms/static"
+    page = [w.replace("data-dirname=\"/static\"", "data-dirname=\"./../cms/static\"") for w in page]
     # 假如有 /get_page 則需額外使用 regex 進行字串代換, 表示要在靜態網頁直接取網頁 (尚未完成)
     #page = [w.replace('/get_page', '') for w in page]
 
@@ -65166,19 +65166,19 @@ token = password_generator()
     &lt;!-- for footer --&gt;
     
         &lt;/div&gt; &lt;!-- for site wrap --&gt;
-            &lt;!-- &lt;script src="../cmsimde/static/chimper/js/jquery-3.3.1.min.js"&gt;&lt;/script&gt; --&gt;
-            &lt;script src="../cmsimde/static/chimper/js/jquery-migrate-3.0.1.min.js"&gt;&lt;/script&gt;
-            &lt;script src="../cmsimde/static/chimper/js/jquery-ui.js"&gt;&lt;/script&gt;
-            &lt;script src="../cmsimde/static/chimper/js/popper.min.js"&gt;&lt;/script&gt;
-            &lt;script src="../cmsimde/static/chimper/js/bootstrap.min.js"&gt;&lt;/script&gt;
-            &lt;script src="../cmsimde/static/chimper/js/owl.carousel.min.js"&gt;&lt;/script&gt;
-            &lt;script src="../cmsimde/static/chimper/js/jquery.stellar.min.js"&gt;&lt;/script&gt;
-            &lt;script src="../cmsimde/static/chimper/js/jquery.countdown.min.js"&gt;&lt;/script&gt;
-            &lt;script src="../cmsimde/static/chimper/js/jquery.magnific-popup.min.js"&gt;&lt;/script&gt;
-            &lt;script src="../cmsimde/static/chimper/js/bootstrap-datepicker.min.js"&gt;&lt;/script&gt;
-            &lt;script src="../cmsimde/static/chimper/js/aos.js"&gt;&lt;/script&gt;
+            &lt;!-- &lt;script src="../cms/static/chimper/js/jquery-3.3.1.min.js"&gt;&lt;/script&gt; --&gt;
+            &lt;script src="../cms/static/chimper/js/jquery-migrate-3.0.1.min.js"&gt;&lt;/script&gt;
+            &lt;script src="../cms/static/chimper/js/jquery-ui.js"&gt;&lt;/script&gt;
+            &lt;script src="../cms/static/chimper/js/popper.min.js"&gt;&lt;/script&gt;
+            &lt;script src="../cms/static/chimper/js/bootstrap.min.js"&gt;&lt;/script&gt;
+            &lt;script src="../cms/static/chimper/js/owl.carousel.min.js"&gt;&lt;/script&gt;
+            &lt;script src="../cms/static/chimper/js/jquery.stellar.min.js"&gt;&lt;/script&gt;
+            &lt;script src="../cms/static/chimper/js/jquery.countdown.min.js"&gt;&lt;/script&gt;
+            &lt;script src="../cms/static/chimper/js/jquery.magnific-popup.min.js"&gt;&lt;/script&gt;
+            &lt;script src="../cms/static/chimper/js/bootstrap-datepicker.min.js"&gt;&lt;/script&gt;
+            &lt;script src="../cms/static/chimper/js/aos.js"&gt;&lt;/script&gt;
             &lt;!--
-            &lt;script src="../cmsimde/static/chimper/js/typed.js"&gt;&lt;/script&gt;
+            &lt;script src="../cms/static/chimper/js/typed.js"&gt;&lt;/script&gt;
                     &lt;script&gt;
                     var typed = new Typed('.typed-words', {
                     strings: ["Web Apps"," WordPress"," Mobile Apps"],
@@ -65191,7 +65191,7 @@ token = password_generator()
                     });
                     &lt;/script&gt;
             --&gt;
-            &lt;script src="../cmsimde/static/chimper/js/main.js"&gt;&lt;/script&gt;
+            &lt;script src="../cms/static/chimper/js/main.js"&gt;&lt;/script&gt;
         ''' + checkMath() + '''&lt;/body&gt;&lt;/html&gt;
         '''
     # enter edit mode
@@ -65283,6 +65283,7 @@ def start_static():
             print(f"Server Error: {e}")
             return "Server error", 500
     else:
-        return redirect("/login")</t>
+        return redirect("/login")
+</t>
 </tnodes>
 </leo_file>
