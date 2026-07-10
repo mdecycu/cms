@@ -1,2 +1,4 @@
 # cms
-將 cmsimde 中的 reveal 刪除後的網際內容管理系統
+cms main scripts
+
+pip install flask flask_cors bs4 lxml pelican markdown
