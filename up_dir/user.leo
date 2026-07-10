@@ -332,7 +332,7 @@ config_dir = _curdir + "/config/"
 <t tx="leo.20190603200835.2">class Init(object):
     # uwsgi as static class variable, can be accessed by Init.uwsgi
     uwsgi = False
-    site_title = "CMSiMDE"
+    site_title = "cms"
     @others
 </t>
 <t tx="leo.20190603200835.3">def __init__(self):
@@ -367,8 +367,8 @@ import http.server, ssl
     httpd = http.server.HTTPServer(server_address, http.server.SimpleHTTPRequestHandler)
     httpd.socket = ssl.wrap_socket(httpd.socket,
                                    server_side=True,
-                                   certfile='./cmsimde/localhost.crt',
-                                   keyfile='./cmsimde/localhost.key',
+                                   certfile='./cms/localhost.crt',
+                                   keyfile='./cms/localhost.key',
                                    ssl_version=ssl.PROTOCOL_TLSv1)
     print(os.getcwd())
     print("8444 https server started")

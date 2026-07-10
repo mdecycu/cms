@@ -1,1 +1,1 @@
-python cmsimde/wsgi.py
+python cms/wsgi.py

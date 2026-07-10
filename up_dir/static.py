@@ -7,10 +7,10 @@ app = Flask(__name__)
 def index():
     return send_from_directory('.', 'index.html')
 
-# Route to serve static files from the ./cmsimde/static directory
-@app.route('/cmsimde/static/<path:filename>')
+# Route to serve static files from the ./cms/static directory
+@app.route('/cms/static/<path:filename>')
 def serve_static(filename):
-    return send_from_directory('cmsimde/static', filename)
+    return send_from_directory('cms/static', filename)
 
 # Route to serve other HTML files from the root directory
 @app.route('/<path:filename>')

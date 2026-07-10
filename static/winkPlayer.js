@@ -6,7 +6,7 @@ function WinkVideo(html5VideoElement) {
 
   // Sanity checks.
   var videoData = this.getData();
-  // use different videoData for each Wink3 video under CMSiMDE
+  // use different videoData for each Wink3 video under cms
   //if (!videoData) {
     //window.alert("Wink: Please set 'data-varname' and 'data-dirname' attributes of the video element.");
     //return;
@@ -400,16 +400,16 @@ WinkVideo.prototype.onCanPlay = function () {
     if (winkVideo.controlBarSize.playWidth == -1) {
       winkVideo.controlBarSize.playWidth = this.width;
       winkVideo.controlBarSize.playHeight = this.height;
-      this.src = winkVideo.element.dataset.dirname + "/./../cmsimde/static/controlbar/progressleft.png";
+      this.src = winkVideo.element.dataset.dirname + "/./../cms/static/controlbar/progressleft.png";
     } else if (winkVideo.controlBarSize.progressLeftWidth == -1) {
       winkVideo.controlBarSize.progressLeftWidth = this.width;
-      this.src = winkVideo.element.dataset.dirname + "/./../cmsimde/static/controlbar/progressright.png";
+      this.src = winkVideo.element.dataset.dirname + "/./../cms/static/controlbar/progressright.png";
     } else if (winkVideo.controlBarSize.progressRightWidth == -1) {
       winkVideo.controlBarSize.progressRightWidth = this.width;
-      this.src = winkVideo.element.dataset.dirname + "/./../cmsimde/static/controlbar/progressemptymiddle.png";
+      this.src = winkVideo.element.dataset.dirname + "/./../cms/static/controlbar/progressemptymiddle.png";
     } else if (winkVideo.controlBarSize.progressMiddleWidth == -1) {
       winkVideo.controlBarSize.progressMiddleWidth = this.width;
-      this.src = winkVideo.element.dataset.dirname + "/./../cmsimde/static/controlbar/progressthumb.png";
+      this.src = winkVideo.element.dataset.dirname + "/./../cms/static/controlbar/progressthumb.png";
     } else if (winkVideo.controlBarSize.progressThumbWidth == -1) {
       winkVideo.controlBarSize.progressThumbWidth = this.width;
       winkVideo.layoutControlBar();  // all loaded, so layout the control bar.
