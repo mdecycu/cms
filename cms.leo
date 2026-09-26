@@ -7333,7 +7333,7 @@
 <v t="leo.20260710101256.1"><vh>@clean README.md</vh></v>
 </vnodes>
 <tnodes>
-<t tx="leo.20190515144224.1" _mod_time="4741da9416638000002e"># coding: utf-8
+<t tx="leo.20190515144224.1"># coding: utf-8
 
 @others
 if __name__ == "__main__":
@@ -7426,6 +7426,15 @@ CORS(app, support_credentials=False)
 app.config['config_dir'] = config_dir
 app.config['static_dir'] = static_dir
 app.config['download_dir'] = download_dir
+
+# 1. 允許整體請求最大到 20MB (可根據需求調整，例如 20 * 1024 * 1024)
+app.config['MAX_CONTENT_LENGTH'] = 20 * 1024 * 1024
+
+# 2. 關鍵：允許「單一表單欄位(textarea)」接收最大 20MB 的純文字/HTML
+app.config['MAX_FORM_MEMORY_SIZE'] = 20 * 1024 * 1024
+
+# 3. 放開表單欄位數量的限制（設為 None 代表不限制）
+app.config['MAX_FORM_PARTS'] = None
 
 # 使用 session 必須要設定 secret_key
 # In order to use sessions you have to set a secret key
@@ -10171,7 +10180,7 @@ def logout():
 
 
 </t>
-<t tx="leo.20190515144242.1" _mod_time="4741da4c60770000002e">#!/usr/bin/python
+<t tx="leo.20190515144242.1">#!/usr/bin/python
 
 """Flask startup script
 """
@@ -10200,7 +10209,7 @@ port = flaskapp.dynamic_port
 
 </t>
 <t tx="leo.20190603204847.1"></t>
-<t tx="leo.20190603204921.1" _mod_time="4741da9416750000002e">@others
+<t tx="leo.20190603204921.1">@others
 @language python
 @tabwidth -4
 </t>
@@ -10238,7 +10247,7 @@ config_dir = _curdir + "/config/"
 
 
 </t>
-<t tx="leo.20190603205008.1" _mod_time="4741da4c60770000002e">@others
+<t tx="leo.20190603205008.1">@others
 @language python
 @tabwidth -4
 </t>
@@ -65021,7 +65030,7 @@ QLineEdit#editorLabel {
 @string qt-layout-name = horizontal-thirds</t>
 <t tx="leo.20260425110342.1">將 reveal 更新為 reveal.js 4.4.0 up_dir/reveal 僅保留 index.html, LICENSE 與 dist  目錄</t>
 <t tx="leo.20260710100944.1">刪除 reveal, 在網際內容管理系統中僅保留基本網頁架構以ˋ及 Pelican blog</t>
-<t tx="leo.20260710101256.1" _mod_time="4741da9415588000002e"># cms
+<t tx="leo.20260710101256.1"># cms
 cms main scripts
 
 pip install flask flask_cors bs4 lxml pelican markdown

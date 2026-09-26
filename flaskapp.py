@@ -86,6 +86,15 @@ app.config['config_dir'] = config_dir
 app.config['static_dir'] = static_dir
 app.config['download_dir'] = download_dir
 
+# 1. 允許整體請求最大到 20MB (可根據需求調整，例如 20 * 1024 * 1024)
+app.config['MAX_CONTENT_LENGTH'] = 20 * 1024 * 1024
+
+# 2. 關鍵：允許「單一表單欄位(textarea)」接收最大 20MB 的純文字/HTML
+app.config['MAX_FORM_MEMORY_SIZE'] = 20 * 1024 * 1024
+
+# 3. 放開表單欄位數量的限制（設為 None 代表不限制）
+app.config['MAX_FORM_PARTS'] = None
+
 # 使用 session 必須要設定 secret_key
 # In order to use sessions you have to set a secret key
 # set the secret key.  keep this really secret:
