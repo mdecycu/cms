@@ -65036,7 +65036,7 @@ cms main scripts
 
 pip install flask flask_cors bs4 lxml pelican markdown
 </t>
-<t tx="leo.20261028093141.1">@app.route('/convert)
+<t tx="leo.20261028093141.1">@app.route('/convert')
 def convert():
 
     subprocess.Popen(

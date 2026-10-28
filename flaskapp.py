@@ -180,7 +180,7 @@ def checkMath():
     return outstring
 
 
-@app.route('/convert)
+@app.route('/convert')
 def convert():
 
     subprocess.Popen(
