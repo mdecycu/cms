@@ -187,7 +187,7 @@ def convert():
         ["cmd.exe", "/c", "cd .. && convert"],
         creationflags=subprocess.CREATE_NEW_CONSOLE
     )
-    g.es("convert 執行完畢")
+    print("convert 執行完畢")
 def correct_url():
 
     """get the correct url for http and https edit mode

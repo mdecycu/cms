@@ -65043,7 +65043,7 @@ def convert():
         ["cmd.exe", "/c", "cd .. &amp;&amp; convert"],
         creationflags=subprocess.CREATE_NEW_CONSOLE
     )
-    g.es("convert 執行完畢")</t>
+    print("convert 執行完畢")</t>
 <t tx="yen.20200710111924.1">def checkMath():
 
     """Use LaTeX Equation rendering
