@@ -65054,13 +65054,13 @@ def convert():
             timeout=300
         )
         outstring = (
-            result.stdout.replace("\n", "&lt;br \&gt;")
-            + ("&lt;br \&gt;" if result.stdout and result.stderr else "")
+            result.stdout.replace("\n", "&lt;br&gt;")
+            + ("&lt;br&gt;" if result.stdout and result.stderr else "")
             + result.stderr
         )
 
         if result.returncode == 0:
-            outstring = "convert 執行成功&lt;br /&gt;" + outstring
+            outstring = "convert 執行成功&lt;br&gt;" + outstring
         else:
             outstring = (
                 f"convert 執行失敗，結束代碼：{result.returncode}\n"
