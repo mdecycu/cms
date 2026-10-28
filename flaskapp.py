@@ -216,10 +216,15 @@ def convert():
     except OSError as e:
         outstring = f"無法執行 convert.exe：{e}"
 
-    return Response(
+    """return Response(
         outstring,
         content_type="text/plain; charset=utf-8"
     )
+    """
+    head, level, page = parse_content()
+    directory = render_menu(head, level, page)
+    return set_css() + "<div class='container'><nav>"+ \
+           directory + "</nav><section><h1>Convert Result</h1>" + outstring + "</section></div></body></html>"
 def correct_url():
 
     """get the correct url for http and https edit mode

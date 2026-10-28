@@ -65072,10 +65072,15 @@ def convert():
     except OSError as e:
         outstring = f"無法執行 convert.exe：{e}"
 
-    return Response(
+    """return Response(
         outstring,
         content_type="text/plain; charset=utf-8"
-    )</t>
+    )
+    """
+    head, level, page = parse_content()
+    directory = render_menu(head, level, page)
+    return set_css() + "&lt;div class='container'&gt;&lt;nav&gt;"+ \
+           directory + "&lt;/nav&gt;&lt;section&gt;&lt;h1&gt;Convert Result&lt;/h1&gt;" + outstring + "&lt;/section&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;"</t>
 <t tx="yen.20200710111924.1">def checkMath():
 
     """Use LaTeX Equation rendering
