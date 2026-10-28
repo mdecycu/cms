@@ -37,6 +37,7 @@
 <v t="yen.20210708085937.1"><vh>password_generator</vh></v>
 <v t="leo.20190515144237.2"><vh>checkLogin (flaskapp.py)</vh></v>
 <v t="yen.20200710111924.1"><vh>checkMath</vh></v>
+<v t="leo.20261028093141.1"><vh>convert</vh></v>
 <v t="leo.20221005075601.1"><vh>correct_url</vh></v>
 <v t="leo.20190515144237.3"><vh>delete_file (flaskapp.py)</vh></v>
 <v t="leo.20190515144237.4"><vh>doDelete (flaskapp.py)</vh></v>
@@ -9116,7 +9117,7 @@ window.location= 'https://' + location.host + location.pathname + location.searc
 &lt;li&gt;&lt;a href="/fileuploadform"&gt;FUpload&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="/download_list"&gt;FList&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="/logout"&gt;Logout&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="/generate_pages"&gt;Convert&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/convert"&gt;Convert&lt;/a&gt;&lt;/li&gt;
 '''
     # under uwsgi mode no start_static and static_port anchor links
     if uwsgi != True:
@@ -9205,7 +9206,7 @@ window.location= 'https://' + location.host + location.pathname + location.searc
 &lt;li&gt;&lt;a href="/fileuploadform"&gt;FUpload&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="/download_list"&gt;FList&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="/logout"&gt;Logout&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="/generate_pages"&gt;Convert&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/convert"&gt;Convert&lt;/a&gt;&lt;/li&gt;
 '''
         # under uwsgi mode no start_static and static_port  anchor links
         # only added when user login as admin
@@ -65035,6 +65036,14 @@ cms main scripts
 
 pip install flask flask_cors bs4 lxml pelican markdown
 </t>
+<t tx="leo.20261028093141.1">@app.route('/convert)
+def convert():
+
+    subprocess.Popen(
+        ["cmd.exe", "/c", "cd .. &amp;&amp; convert"],
+        creationflags=subprocess.CREATE_NEW_CONSOLE
+    )
+    g.es("convert 執行完畢")</t>
 <t tx="yen.20200710111924.1">def checkMath():
 
     """Use LaTeX Equation rendering

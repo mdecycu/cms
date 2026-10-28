@@ -180,6 +180,14 @@ def checkMath():
     return outstring
 
 
+@app.route('/convert)
+def convert():
+
+    subprocess.Popen(
+        ["cmd.exe", "/c", "cd .. && convert"],
+        creationflags=subprocess.CREATE_NEW_CONSOLE
+    )
+    g.es("convert 執行完畢")
 def correct_url():
 
     """get the correct url for http and https edit mode
@@ -2581,7 +2589,7 @@ window.location= 'https://' + location.host + location.pathname + location.searc
 <li><a href="/fileuploadform">FUpload</a></li>
 <li><a href="/download_list">FList</a></li>
 <li><a href="/logout">Logout</a></li>
-<li><a href="/generate_pages">Convert</a></li>
+<li><a href="/convert">Convert</a></li>
 '''
     # under uwsgi mode no start_static and static_port anchor links
     if uwsgi != True:
@@ -2669,7 +2677,7 @@ window.location= 'https://' + location.host + location.pathname + location.searc
 <li><a href="/fileuploadform">FUpload</a></li>
 <li><a href="/download_list">FList</a></li>
 <li><a href="/logout">Logout</a></li>
-<li><a href="/generate_pages">Convert</a></li>
+<li><a href="/convert">Convert</a></li>
 '''
         # under uwsgi mode no start_static and static_port  anchor links
         # only added when user login as admin
