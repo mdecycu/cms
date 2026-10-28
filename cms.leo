@@ -7344,9 +7344,9 @@ if __name__ == "__main__":
 </t>
 <t tx="leo.20190515144237.1">"""Flask Main program
 """
-
+# add Response for convert
 from flask import Flask, send_from_directory, request, redirect, \
-    render_template, session, make_response, url_for, flash
+    render_template, session, make_response, url_for, flash, Response
 from flask_cors import CORS
 import random
 import math
