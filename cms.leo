@@ -65039,11 +65039,43 @@ pip install flask flask_cors bs4 lxml pelican markdown
 <t tx="leo.20261028093141.1">@app.route('/convert')
 def convert():
 
-    subprocess.Popen(
-        ["cmd.exe", "/c", "convert"],
-        creationflags=subprocess.CREATE_NEW_CONSOLE
-    )
-    print("convert 執行完畢")</t>
+    """Action to convert config/content.htm to static pages of content.
+    """
+
+    if not isAdmin():
+        return redirect("/login")
+    try:
+        result = subprocess.run(
+            ["convert.exe"],
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            timeout=300
+        )
+        outstring = (
+            result.stdout
+            + ("\n" if result.stdout and result.stderr else "")
+            + result.stderr
+        )
+
+        if result.returncode == 0:
+            outstring = "convert 執行成功\n" + outstring
+        else:
+            outstring = (
+                f"convert 執行失敗，結束代碼：{result.returncode}\n"
+                + outstring
+            )
+
+    except subprocess.TimeoutExpired:
+        outstring = "convert 執行逾時（300 秒）"
+    except OSError as e:
+        outstring = f"無法執行 convert.exe：{e}"
+
+    return Response(
+        outstring,
+        content_type="text/plain; charset=utf-8"
+    )</t>
 <t tx="yen.20200710111924.1">def checkMath():
 
     """Use LaTeX Equation rendering
