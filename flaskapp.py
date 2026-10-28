@@ -184,7 +184,7 @@ def checkMath():
 def convert():
 
     subprocess.Popen(
-        ["cmd.exe", "/c", "cd .. && convert"],
+        ["cmd.exe", "/c", "convert"],
         creationflags=subprocess.CREATE_NEW_CONSOLE
     )
     print("convert 執行完畢")

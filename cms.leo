@@ -65040,7 +65040,7 @@ pip install flask flask_cors bs4 lxml pelican markdown
 def convert():
 
     subprocess.Popen(
-        ["cmd.exe", "/c", "cd .. &amp;&amp; convert"],
+        ["cmd.exe", "/c", "convert"],
         creationflags=subprocess.CREATE_NEW_CONSOLE
     )
     print("convert 執行完畢")</t>
